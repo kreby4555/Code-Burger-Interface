@@ -2,10 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import Login from './containers/Login'
+import GlobalStyles from './Style/globalStyles'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <Login />
+    <>
+      <Login />
+      <GlobalStyles />
+    </>
   </React.StrictMode>
 )
