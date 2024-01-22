@@ -11,14 +11,14 @@ export const Container = styled.div`
   align-items: center;
 `
 
-export const LoginImage = styled.img`
-  height: 65%;
+export const RegisterImage = styled.img`
+  height: 80%;
 `
 
 export const ContainerItens = styled.div`
   background: #373737;
   border-radius: 0 10px 10px 0;
-  height: 65%;
+  height: 80%;
   padding: 25px 75px;
   display: flex;
   flex-direction: column;
@@ -29,6 +29,12 @@ export const ContainerItens = styled.div`
     flex-direction: column;
   }
 
+  img {
+    width: 300px;
+    display: block;
+    margin-left: 60px;
+  }
+
   h1 {
     font-style: normal;
     font-size: 24px;
@@ -36,7 +42,7 @@ export const ContainerItens = styled.div`
     line-height: 28px;
     color: #ffffff;
     text-align: center;
-    margin-top: 75px;
+    margin-top: 10px;
   }
 `
 
@@ -46,7 +52,7 @@ export const Label = styled.p`
   font-weight: 500;
   line-height: 14px;
   color: #ffffff;
-  margin-top: 28px;
+  margin-top: ${props => (props.error ? '12px' : '28px')};
   margin-bottom: 5px;
 `
 
