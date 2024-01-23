@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -21,8 +22,8 @@ import {
 } from './styles'
 
 function Login() {
-  const users = useUser()
-  console.log(users)
+  const { putUserData, userData } = useUser()
+  console.log(userData)
 
   const schema = Yup.object().shape({
     email: Yup.string()
@@ -44,24 +45,31 @@ function Login() {
 
   const onSubmit = async clientData => {
     try {
-      const { status } = await api.post(
-        '/session',
+      const { data, status } = await toast.promise(
+        api.post(
+          '/session',
+          {
+            email: clientData.email,
+            password: clientData.password
+          },
+          { validateStatus: () => true }
+        ),
         {
-          email: clientData.email,
-          password: clientData.password
-        },
-        { validateStatus: () => true }
+          pending: 'Verificando seus dados'
+        }
       )
 
       if (status === 201 || status === 200) {
-        toast.success('Seja Bem-vindo (a)')
+        toast.success('Seja bem-vindo(a)')
       } else if (status === 401) {
-        toast.error('Verifique seu e-mail e sua senha!')
+        toast.error('Verifique seu e-mail e sua senha')
       } else {
         throw new Error()
       }
+
+      putUserData(data)
     } catch (err) {
-      toast.error('Falha no sistema! Tente novamente')
+      toast.error('Flaha no sistema!')
     }
   }
 
@@ -95,7 +103,10 @@ function Login() {
         </form>
 
         <SignInLink>
-          Não possui conta ? <a>Sing Up</a>
+          Não possui conta ?{' '}
+          <Link style={{ color: 'white' }} to="/cadastro">
+            Sing Up
+          </Link>
         </SignInLink>
       </ContainerItens>
     </Container>

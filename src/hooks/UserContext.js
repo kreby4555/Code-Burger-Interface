@@ -1,16 +1,31 @@
-import React, { createContext, useContext } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 
 const UserContext = createContext({})
 
 export const UserProvider = ({ children }) => {
-  const user = { name: 'Cleber', agge: 22 }
-  const newUser = { name: 'Cleber', agge: 22 }
-  const outroUser = { name: 'Cleber', agge: 22 }
+  const [userData, setUserData] = useState({})
+
+  const putUserData = async userInfo => {
+    setUserData(userInfo)
+
+    await localStorage.setItem('codeburger:userData', JSON.stringify(userInfo))
+  }
+
+  useEffect(() => {
+    const loadUserData = async () => {
+      const clientInfo = await localStorage.getItem('codeburger:userData')
+
+      if (clientInfo) {
+        setUserData(JSON.parse(clientInfo))
+      }
+    }
+    loadUserData()
+  }, [])
 
   return (
-    <UserContext.Provider value={{ user, newUser, outroUser }}>
+    <UserContext.Provider value={{ putUserData, userData }}>
       {children}
     </UserContext.Provider>
   )
