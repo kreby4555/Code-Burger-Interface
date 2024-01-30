@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -22,8 +22,8 @@ import {
 } from './styles'
 
 function Login() {
-  const { putUserData, userData } = useUser()
-  console.log(userData)
+  const history = useHistory()
+  const { putUserData } = useUser()
 
   const schema = Yup.object().shape({
     email: Yup.string()
@@ -45,32 +45,23 @@ function Login() {
 
   const onSubmit = async clientData => {
     try {
-      const { data, status } = await toast.promise(
-        api.post(
-          '/session',
-          {
-            email: clientData.email,
-            password: clientData.password
-          },
-          { validateStatus: () => true }
-        ),
+      const { data } = await toast.promise(
+        api.post('/session', {
+          email: clientData.email,
+          password: clientData.password
+        }),
         {
-          pending: 'Verificando seus dados'
+          pending: 'Verificando seus dados',
+          success: 'Seja bem-vindo(a)',
+          error: 'Verifique seu e-amil e senha'
         }
       )
 
-      if (status === 201 || status === 200) {
-        toast.success('Seja bem-vindo(a)')
-      } else if (status === 401) {
-        toast.error('Verifique seu e-mail e sua senha')
-      } else {
-        throw new Error()
-      }
-
       putUserData(data)
-    } catch (err) {
-      toast.error('Flaha no sistema!')
-    }
+      setTimeout(() => {
+        history.push('/')
+      }, 1000)
+    } catch (err) {}
   }
 
   return (
