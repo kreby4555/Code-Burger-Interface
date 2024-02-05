@@ -18,7 +18,7 @@ function OffersCarousel() {
       setOffers(onlyOffers)
     }
     loadOffers()
-  })
+  }, [])
 
   const breakPoints = [
     { width: 1, itemsToShow: 1 },

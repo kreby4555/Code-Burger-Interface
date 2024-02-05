@@ -12,7 +12,7 @@ function CategoryCarousel() {
       setCategories(data)
     }
     loadCategories()
-  })
+  }, [])
 
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
