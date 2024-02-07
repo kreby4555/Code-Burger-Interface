@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react'
 
 import ProductLogo from '../../assets/product-logo.svg'
+import CardProducts from '../../components/CardsProducts'
 import api from '../../services/api'
-import { Container, ProductImg, CategoryButton, CategoriesMenu } from './styles'
+import formatCurrency from '../../utils/formatCurrency'
+import {
+  Container,
+  ProductImg,
+  CategoryButton,
+  CategoriesMenu,
+  ProductContainer
+} from './styles'
 
 function Product() {
   const [categories, setCategories] = useState([])
+  const [products, setProducts] = useState(0)
   const [activeCategory, setActiveCategory] = useState(0)
   useEffect(() => {
     async function loadCategories() {
@@ -14,6 +23,17 @@ function Product() {
       const newCategories = [{ id: 0, name: 'Todas' }, ...data]
       setCategories(newCategories)
     }
+
+    async function loadProducts() {
+      const { data: allProducts } = await api.get('products')
+
+      const newProducts = allProducts.map(product => {
+        return { ...product, formatedPrice: formatCurrency(product.price) }
+      })
+
+      setProducts(newProducts)
+    }
+    loadProducts()
     loadCategories()
   }, [])
   return (
@@ -25,7 +45,7 @@ function Product() {
             <CategoryButton
               type="button"
               key={category.id}
-              isCativeCategory={activeCategory === category.id}
+              isActiveCategory={activeCategory === category.id}
               onClick={() => {
                 setActiveCategory(category.id)
               }}
@@ -34,6 +54,12 @@ function Product() {
             </CategoryButton>
           ))}
       </CategoriesMenu>
+      <ProductContainer>
+        {products &&
+          products.map(product => (
+            <CardProducts key={product.id} product={product} />
+          ))}
+      </ProductContainer>
     </Container>
   )
 }

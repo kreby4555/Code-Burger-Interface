@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const Container = styled.div``
+export const Container = styled.div`
+  background: #e5e5e5;
+`
 
 export const ProductImg = styled.img`
   width: 100%;
@@ -17,8 +19,17 @@ export const CategoryButton = styled.button`
   background: none;
   border: none;
   border-bottom: ${props => props.isCativeCategory && '2px solid #9758a6'};
-  color: ${props => (props.isCativeCategory ? '#9758a6' : '#9a9a9d')};
+  color: ${props => (props.isActiveCategory ? '#9758a6' : '#9a9a9d')};
   font-size: 17px;
   line-height: 20px;
   padding-bottom: 5px;
+`
+
+export const ProductContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 40px;
+  justify-items: center;
+  margin-top: 20px;
 `
