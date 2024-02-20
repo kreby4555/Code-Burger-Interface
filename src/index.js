@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ToastContainer } from 'react-toastify'
 
-import { UserProvider } from './hooks/UserContext'
+import AppProvider from './hooks'
 import Routes from './routes/routes'
 import GlobalStyles from './Style/globalStyles'
 
@@ -10,9 +10,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <>
-      <UserProvider>
+      <AppProvider>
         <Routes />
-      </UserProvider>
+      </AppProvider>
       <ToastContainer autoClose={2000} theme="colored" />
       <GlobalStyles />
     </>
