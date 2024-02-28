@@ -7,6 +7,10 @@ const CartContext = createContext({})
 export const CartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([])
 
+  const updateLocalStorage = async products => {
+    await localStorage.setItem('codeburger:cartInfo', JSON.stringify(products))
+  }
+
   const putProductInCart = async product => {
     const cartIndex = cartProducts.findIndex(prd => prd.id === product.id)
 
@@ -23,10 +27,7 @@ export const CartProvider = ({ children }) => {
       newCartProducts = [...cartProducts, product]
       setCartProducts(newCartProducts)
     }
-    await localStorage.setItem(
-      'codeburger:cartInfo',
-      JSON.stringify(newCartProducts)
-    )
+    await updateLocalStorage(newCartProducts)
   }
 
   const deleteProducts = async productId => {
@@ -45,7 +46,7 @@ export const CartProvider = ({ children }) => {
 
     setCartProducts(newCart)
 
-    await localStorage.setItem('codeburger:cartInfo', JSON.stringify(newCart))
+    await updateLocalStorage(newCart)
   }
 
   const decreaseProducts = async productId => {
@@ -58,7 +59,7 @@ export const CartProvider = ({ children }) => {
           : product
       })
       setCartProducts(newCart)
-      await localStorage.setItem('codeburger:cartInfo', JSON.stringify(newCart))
+      await updateLocalStorage(newCart)
     } else {
       deleteProducts(productId)
     }
