@@ -1,30 +1,35 @@
 const status = [
   {
     id: 1,
+    label: 'Todos',
+    value: 'Todos'
+  },
+  {
+    id: 2,
     label: 'Pedido realizado',
     value: 'Pedido realizado'
   },
 
   {
-    id: 2,
+    id: 3,
     label: 'Preparando',
     value: 'Preparando'
   },
 
   {
-    id: 3,
+    id: 4,
     label: 'Pedido pronto',
     value: 'Pedido pronto'
   },
 
   {
-    id: 4,
+    id: 5,
     label: 'Pedido a caminho',
     value: 'Pedido a caminho'
   },
 
   {
-    id: 5,
+    id: 6,
     label: 'Pedido entregue',
     value: 'Pedido entregue'
   }
