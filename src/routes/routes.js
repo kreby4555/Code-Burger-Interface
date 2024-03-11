@@ -14,6 +14,11 @@ function MyRoutes() {
         <PrivateRoute component={Cart} path="/carrinho" />
 
         <PrivateRoute component={Admin} path="/pedidos" isAdmin={true} />
+        <PrivateRoute
+          component={Admin}
+          path="/listar-produtos"
+          isAdmin={true}
+        />
       </Switch>
     </Router>
   )
