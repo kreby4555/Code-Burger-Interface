@@ -10,7 +10,7 @@ import { Container, ContainerItems } from './styles'
 export function Admin({ match: { path } }) {
   return (
     <Container>
-      <SideMenuadmin />
+      <SideMenuadmin path={path} />
       <ContainerItems>
         {path === paths.Order && <Orders />}
         {path === paths.Products && <ListProducts />}
@@ -19,7 +19,7 @@ export function Admin({ match: { path } }) {
   )
 }
 
-Admin.prototypes = {
+Admin.protoTypes = {
   match: PropTypes.shape({
     path: PropTypes.string
   })
