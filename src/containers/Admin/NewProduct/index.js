@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import ReactSelect from 'react-select'
 
-import { Button } from '../../../components/Button'
 import api from '../../../services/api'
-import { Container, Label, Input } from './styles'
+import { Container, Label, Input, ButtonStyles } from './styles'
 
 function NewProduct() {
   const { register, handleSubmit } = useForm()
@@ -31,7 +30,7 @@ function NewProduct() {
 
         <ReactSelect />
 
-        <Button>Adicionar Produtos</Button>
+        <ButtonStyles>Adicionar Produtos</ButtonStyles>
       </form>
     </Container>
   )
