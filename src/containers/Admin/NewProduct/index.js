@@ -52,49 +52,57 @@ function NewProduct() {
   return (
     <Container>
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
-        <Label>Nome</Label>
-        <Input type="text" {...register('name')} />
-        <ErrorMenssage>{errors.name?.message}</ErrorMenssage>
+        <div>
+          <Label>Nome</Label>
+          <Input type="text" {...register('name')} />
+          <ErrorMenssage>{errors.name?.message}</ErrorMenssage>
+        </div>
 
-        <Label>Preço</Label>
-        <Input type="number" {...register('price')} />
-        <ErrorMenssage>{errors.price?.message}</ErrorMenssage>
+        <div>
+          <Label>Preço</Label>
+          <Input type="number" {...register('price')} />
+          <ErrorMenssage>{errors.price?.message}</ErrorMenssage>
+        </div>
 
-        <LabelUpload>
-          {filename || (
-            <>
-              <DriveFolderUploadIcon />
-              Carregue a imagem do produto
-            </>
-          )}
+        <div>
+          <LabelUpload>
+            {filename || (
+              <>
+                <DriveFolderUploadIcon />
+                Carregue a imagem do produto
+              </>
+            )}
 
-          <input
-            type="file"
-            accept="image/png, image/jpeg"
-            {...register('file')}
-            onChange={value => {
-              setFileName(value.target.files[0]?.name)
+            <input
+              type="file"
+              accept="image/png, image/jpeg"
+              {...register('file')}
+              onChange={value => {
+                setFileName(value.target.files[0]?.name)
+              }}
+            />
+          </LabelUpload>
+          <ErrorMenssage>{errors.file?.message}</ErrorMenssage>
+        </div>
+
+        <div>
+          <Controller
+            name="category"
+            control={control}
+            render={({ field }) => {
+              return (
+                <ReactSelect
+                  {...field}
+                  options={categories}
+                  getOptionLabel={cat => cat.name}
+                  getOptionValue={cat => cat.id}
+                  placeholder="Categorias"
+                />
+              )
             }}
-          />
-        </LabelUpload>
-        <ErrorMenssage>{errors.file?.message}</ErrorMenssage>
-
-        <Controller
-          name="category"
-          control={control}
-          render={({ field }) => {
-            return (
-              <ReactSelect
-                {...field}
-                options={categories}
-                getOptionLabel={cat => cat.name}
-                getOptionValue={cat => cat.id}
-                placeholder="Categorias"
-              />
-            )
-          }}
-        ></Controller>
-        <ErrorMenssage>{errors.category?.message}</ErrorMenssage>
+          ></Controller>
+          <ErrorMenssage>{errors.category?.message}</ErrorMenssage>
+        </div>
 
         <ButtonStyles>Adicionar Produtos</ButtonStyles>
       </form>
