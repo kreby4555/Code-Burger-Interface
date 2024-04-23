@@ -1,70 +1,129 @@
-# Getting Started with Create React App
+## 🍔 CodeBurger Interface
+#### Is an application developed in React that has two distinct parts: the customer part and the admin part. The application allows customers to view the menu, place orders and administrators to manage orders and the menu.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🗃️ Installation
+1. Clone the repository:
+```
+git clone https://github.com/kreby4555/Code-Burger-Interface
+```
+2. Navigate to the project directory:
+```
+cd name-of-repository
+```
+3. Install the dependencies:
+```
+npm install
+```
+4. Start the application:
+```
+npm start
+```
 
-## Available Scripts
+## 👨🏿‍💻 Technologies used:
+- React
+- Axios
+- Styled-Components
+- React-Toastify
+- React-Select
+- Mui-Materia
+- Material-Icon
+- Hook-Form
+- React-Hooks
+- Eslint
+- Prettier
+- Yup
+- Prop-Types
+- Contex-Api
 
-In the project directory, you can run:
+## Features
+#### Client
+- View menu with burger options, side dishes and drinks.
+- Adding items to the shopping cart.
+- Removing items from the cart.
+- Viewing the order summary before finalizing.
+-Sending the order to the restaurant.
 
-### `npm start`
+#### Admin
+- View pending orders.
+- Updating the status of orders (e.g. confirmed, preparing, delivered).
+- Adding, editing and removing menu items.
+- Viewing the history of completed orders.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Interface
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Login
+When accessing the application, the user is taken to the login screen. If they are already registered, they just need to add their email address and password to access the main page.
 
-### `npm test`
+<img src="https://github.com/stanley-rodrigues/picForReadme/blob/main/interface%20devburguer/Login.png" />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  ##
 
-### `npm run build`
+If he tries to access with incorrect data or tries to access without adding the data, an error will be displayed.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="https://github.com/stanley-rodrigues/picForReadme/blob/main/interface%20devburguer/LoginValidation.png" />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Register
+If the user does not have access, they must click on Signup to register. They will then be taken to the registration page.
 
-### `npm run eject`
+<img src="https://github.com/stanley-rodrigues/picForReadme/blob/main/interface%20devburguer/Sign%20Up.png" />
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+##
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you try to register without the data or with incorrect data, an error will be displayed.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<img src="https://github.com/stanley-rodrigues/picForReadme/blob/main/interface%20devburguer/Captura%20de%20Tela%202024-01-18%20%C3%A0s%2014.25.30.png" />
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+##
 
-## Learn More
+### Home page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+After logging in or registering, you will be taken to the main page, where you can add products to your cart, see the products on offer and select the product category you want. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img src="https://github.com/stanley-rodrigues/picForReadme/blob/main/interface%20devburguer/HOME%20PAGE.png" />
 
-### Code Splitting
+##
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Categories page
 
-### Analyzing the Bundle Size
+Once the user has selected the desired category, they will be taken to the products filtered according to the category selected. Other categories can also be selected.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<img src="https://github.com/stanley-rodrigues/picForReadme/blob/main/interface%20devburguer/produtos.png" />
 
-### Making a Progressive Web App
+##
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Cart
 
-### Advanced Configuration
+After selecting the desired product, the user will be taken to the cart page, where they can add the number of products or remove products. You can also view your total purchase.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<img src="https://github.com/stanley-rodrigues/picForReadme/blob/main/interface%20devburguer/checkOut.png" />
 
-### Deployment
+##
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Admin page
 
-### `npm run build` fails to minify
+If the logged-in user is an administrator, they will be taken to a private page where they can view orders and their status, list products, edit products such as: image, name, category, price and put on offer or remove and add new products.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src="https://github.com/stanley-rodrigues/picForReadme/blob/main/interface%20devburguer/Admin%20pedidos.png" />
+
+##
+
+
+<img src="https://github.com/stanley-rodrigues/picForReadme/blob/main/interface%20devburguer/AdminVisupedidos.png" />
+
+##
+
+
+<img src="https://github.com/stanley-rodrigues/picForReadme/blob/main/interface%20devburguer/Addprodutos.png" />
+
+## Developer
+Developed by Cleber.
+
+:email: devcleber@outlook.com
+
+
+</br>
+</br>
+<a href="https://www.linkedin.com/in/cleberalvesnunes/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+<a href="https://github.com/kreby4555"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /></a>
