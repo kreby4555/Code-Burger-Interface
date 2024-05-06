@@ -25,7 +25,7 @@ npm start
 - Styled-Components
 - React-Toastify
 - React-Select
-- Mui-Materia
+- Mui-Material
 - Material-Icon
 - Hook-Form
 - React-Hooks
